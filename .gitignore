@@ -3,7 +3,8 @@ coverage
 build
 node_modules
 stats.json
-
+.otto/
+.ottoid
 # Cruft
 .DS_Store
 npm-debug.log
