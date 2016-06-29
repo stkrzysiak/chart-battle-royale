@@ -11,7 +11,25 @@
 
 import React from 'react';
 import LineChartNvd3 from '../../components/LineChartNvd3';
-
+import { Tabs, Tab } from 'material-ui/Tabs';
+import Slider from 'material-ui/Slider';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 export default () =>
-  (<LineChartNvd3 />);
+  (<Tabs>
+    <Tab label="NVD3-1">
+      <div>
+        <LineChartNvd3 />
+      </div>
+    </Tab>
+    <Tab label="NVD3-2">
+        <LineChartNvd3 />
+    </Tab>
+    <Tab label="NVD3-3">
+        <LineChartNvd3 />
+    </Tab>
+    <Tab label="NVD3-4">
+        <LineChartNvd3 />
+    </Tab>
+  </Tabs>);

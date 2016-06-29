@@ -5,6 +5,7 @@
  * This component is the skeleton around the actual pages, and should only
  * contain code that should be seen on all pages. (e.g. navigation bar)
  */
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import React from 'react';
 
@@ -17,10 +18,12 @@ import styles from './styles.css';
 
 function App(props) {
   return (
-    <div className={styles.wrapper}>
-      {props.children}
-      <Footer />
-    </div>
+    <MuiThemeProvider>
+      <div className={styles.wrapper}>
+        {props.children}
+        <Footer />
+      </div>
+    </MuiThemeProvider>
   );
 }
 
