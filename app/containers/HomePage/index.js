@@ -10,26 +10,26 @@
  */
 
 import React from 'react';
-import LineChartNvd3 from '../../components/LineChartNvd3';
 import { Tabs, Tab } from 'material-ui/Tabs';
-import Slider from 'material-ui/Slider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+injectTapEventPlugin(); // for the tabs
+
+
+import MultiBarChartNvd3 from '../../components/MultiBarChartNvd3';
+import MultiBarChartC3 from '../../components/MultiBarChartC3';
+import { generateBarChartData } from '../../utils/data';
+
+
+const data = generateBarChartData();
 
 export default () =>
   (<Tabs>
-    <Tab label="NVD3-1">
+    <Tab label="NVD3">
       <div>
-        <LineChartNvd3 />
+        <MultiBarChartNvd3 data={data} />
       </div>
     </Tab>
-    <Tab label="NVD3-2">
-        <LineChartNvd3 />
-    </Tab>
-    <Tab label="NVD3-3">
-        <LineChartNvd3 />
-    </Tab>
-    <Tab label="NVD3-4">
-        <LineChartNvd3 />
+    <Tab label="C3">
+      <MultiBarChartC3 data={data} />
     </Tab>
   </Tabs>);
