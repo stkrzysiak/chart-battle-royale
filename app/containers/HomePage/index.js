@@ -17,6 +17,7 @@ injectTapEventPlugin(); // for the tabs
 
 import MultiBarChartNvd3 from '../../components/MultiBarChartNvd3';
 import MultiBarChartC3 from '../../components/MultiBarChartC3';
+import MultiBarChartHighCharts from '../../components/MultiBarChartHighCharts';
 import { generateBarChartData } from '../../utils/data';
 
 
@@ -31,5 +32,8 @@ export default () =>
     </Tab>
     <Tab label="C3">
       <MultiBarChartC3 data={data} />
+    </Tab>
+    <Tab label="HighCharts">
+      <MultiBarChartHighCharts data={data} />
     </Tab>
   </Tabs>);
