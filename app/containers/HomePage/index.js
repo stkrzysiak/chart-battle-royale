@@ -20,20 +20,18 @@ import MultiBarChartC3 from '../../components/MultiBarChartC3';
 import MultiBarChartHighCharts from '../../components/MultiBarChartHighCharts';
 import { generateBarChartData } from '../../utils/data';
 
-
+const colors = ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900'];
 const data = generateBarChartData();
 
 export default () =>
   (<Tabs>
     <Tab label="NVD3">
-      <div>
-        <MultiBarChartNvd3 data={data} />
-      </div>
+      <MultiBarChartNvd3 data={data} colors={colors} />
     </Tab>
     <Tab label="C3">
-      <MultiBarChartC3 data={data} />
+      <MultiBarChartC3 data={data} colors={colors} />
     </Tab>
     <Tab label="HighCharts">
-      <MultiBarChartHighCharts data={data} />
+      <MultiBarChartHighCharts data={data} colors={colors} />
     </Tab>
   </Tabs>);

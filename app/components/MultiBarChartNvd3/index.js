@@ -5,29 +5,26 @@
 import React from 'react';
 import NVD3Chart from 'react-nvd3';
 
-function getDatum(data) {
-  return [
-    {
-      values: data.series1,
-      key: 'Line 1',
-      color: '#ff7f0e',
-    },
-    {
-      values: data.series2,
-      key: 'Line 2',
-      color: '#ff7f0e',
-    },
-
-  ];
+function getDatum(data, colors) {
+  const datum = [];
+  const arrayLength = data.length;
+  for (let i = 0; i < arrayLength; i++) {
+    datum.push({
+      values: data[i],
+      key: `Series  ${i}`,
+      color: colors.shift(),
+    });
+  }
+  return datum;
 }
 
 
-export default ({ data }) => {
-  const formattedData = getDatum(data);
+export default ({ data, colors }) => {
+  const datum = getDatum(data, colors.slice(0));
   return (
     <div>
       <NVD3Chart
-        datum={formattedData}
+        datum={datum}
         id="lineChart"
         type="multiBarChart"
         width="800"

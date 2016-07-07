@@ -13,21 +13,22 @@ import Chart from 'react-c3-component';
 // import 'c3/c3.css';
 
 function getDatum(data) {
-  let formattedSeries1 = ['series1'];
-  let formattedSeries2 = ['series2'];
+  const formattedSeries = [];
+  const arrayLength = data.length;
+  for (let i = 0; i < arrayLength; i++) {
+    formattedSeries.push([`Series ${i}`]);
+  }
+  for (let i = 0; i < arrayLength; i++) {
+    data[i].map((val) => formattedSeries[i].push(val.y));
+  }
 
-  data.series1.map((val) => formattedSeries1.push(val.y));
-  data.series2.map((val) => formattedSeries2.push(val.y));
-  console.log(formattedSeries2);
-  return [
-    formattedSeries1,
-    formattedSeries2,
-  ];
+  return formattedSeries;
 }
 
 
-function MultiBarChartC3({ data }) {
+export default ({ data, colors }) => {
   const formattedData = getDatum(data);
+
   return (
     <Chart
       config={{
@@ -39,9 +40,10 @@ function MultiBarChartC3({ data }) {
           width: 800,
           height: 600,
         },
+        color: {
+          pattern: colors,
+        },
       }}
     />
   );
 }
-
-export default MultiBarChartC3;

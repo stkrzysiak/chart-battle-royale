@@ -7,40 +7,40 @@ import ReactHighcharts from 'react-highcharts';
 import React from 'react';
 
 function getDatum(data) {
-  const formattedSeries1 = [];
-  const formattedSeries2 = [];
-  const xAxis = [];
+  const datum = [];
+  const arrayLength = data.length;
+  for (let i = 0; i < arrayLength; i++) {
+    datum[i] = datum[i] || [];
+    const tmp = []
+    data[i].map((val) => tmp.push(val.y));
+    datum[i] = {
+      name: `Series ${i}`,
+      data: tmp
+    }
+  }
 
-  data.series1.map((val) => formattedSeries1.push(val.y));
-  data.series2.map((val) => formattedSeries2.push(val.y));
-  data.series2.map((val) => xAxis.push(val.x));
-
-  console.log(formattedSeries2);
-  return {
-    formattedSeries1,
-    formattedSeries2,
-    xAxis,
-  };
+  return datum;
 }
 
-function MultiBarChartHighCharts({ data }) {
+function getAxisX(data) {
+  const xAxis = [];
+  data.pop().map((val) => xAxis.push(val.x));
+  return xAxis;
+}
+
+export default ({ data, colors}) => {
   const formattedData = getDatum(data);
   const config = {
     xAxis: {
-      categories: formattedData.xAxis,
+      categories: getAxisX(data),
     },
-    series: [{
-      name: 'Series 1',
-      data: formattedData.formattedSeries1,
-    }, {
-      name: 'Series 2',
-      data: formattedData.formattedSeries2,
-    }],
+    series: formattedData,
     chart: {
       type: 'column',
       height: 600,
       width: 800,
     },
+    colors: colors,
   };
   return (
     <div>
@@ -48,5 +48,3 @@ function MultiBarChartHighCharts({ data }) {
     </div>
   );
 }
-
-export default MultiBarChartHighCharts;
