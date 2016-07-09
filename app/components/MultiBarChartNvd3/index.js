@@ -19,7 +19,8 @@ function getDatum(data, colors) {
 }
 
 
-export default ({ data, colors }) => {
+export default ({ data, colors, width, height }) => {
+  console.log(`width is: ${width}`);
   const datum = getDatum(data, colors.slice(0));
   return (
     <div>
@@ -28,8 +29,8 @@ export default ({ data, colors }) => {
         groupSpacing={0.5}
         id="lineChart"
         type="multiBarChart"
-        width="800"
-        height="600"
+        width={width}
+        height={height}
         reduceXTicks={false}
         rotateLabels={40}
         x="x"

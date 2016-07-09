@@ -28,7 +28,7 @@ function getAxisX(data) {
   return xAxis;
 }
 
-export default ({ data, colors}) => {
+export default ({ data, colors, width, height}) => {
   const formattedData = getDatum(data);
   const config = {
     xAxis: {
@@ -37,8 +37,8 @@ export default ({ data, colors}) => {
     series: formattedData,
     chart: {
       type: 'column',
-      height: 600,
-      width: 800,
+      height: height,
+      width: width,
     },
     colors: colors,
   };

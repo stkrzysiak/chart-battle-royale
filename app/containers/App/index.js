@@ -16,6 +16,9 @@ import Footer from 'components/Footer';
 
 import styles from './styles.css';
 
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin(); // for the tabs
+
 function App(props) {
   return (
     <MuiThemeProvider>

@@ -26,7 +26,7 @@ function getDatum(data) {
 }
 
 
-export default ({ data, colors }) => {
+export default ({ data, colors, width, height }) => {
   const formattedData = getDatum(data);
 
   return (
@@ -37,8 +37,8 @@ export default ({ data, colors }) => {
           type: 'bar',
         },
         size: {
-          width: 800,
-          height: 600,
+          width,
+          height,
         },
         color: {
           pattern: colors,
