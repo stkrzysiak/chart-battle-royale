@@ -25,10 +25,13 @@ export default ({ data, colors }) => {
     <div>
       <NVD3Chart
         datum={datum}
+        groupSpacing={0.5}
         id="lineChart"
         type="multiBarChart"
         width="800"
         height="600"
+        reduceXTicks={false}
+        rotateLabels={40}
         x="x"
         y="y"
       />
