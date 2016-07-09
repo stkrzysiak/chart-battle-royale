@@ -3,10 +3,8 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the homePage state domain
  */
-const selectHomePageDomain = () => state => {
-  console.log(state.get('controlPanel').toJS(), 'state is');
-  return state.get('controlPanel');
-}
+const selectHomePageDomain = () => state => state.get('controlPanel');
+
 
 /**
  * Other specific selectors

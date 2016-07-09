@@ -3,13 +3,7 @@ import { createSelector } from 'reselect';
 /**
  * Direct selector to the controlPanel state domain
  */
-const selectControlPanelDomain = () => state => {
-  return state.get('controlPanel');
-}
-
-/**
- * Other specific selectors
- */
+const selectControlPanelDomain = () => state => state.get('controlPanel');
 
 
 /**

@@ -19,8 +19,7 @@ function getDatum(data, colors) {
 }
 
 
-export default ({ data, colors, width, height }) => {
-  console.log(`width is: ${width}`);
+const MultiBarChartNvd3 = ({ data, colors, width, height }) => {
   const datum = getDatum(data, colors.slice(0));
   return (
     <div>
@@ -39,3 +38,12 @@ export default ({ data, colors, width, height }) => {
     </div>
   );
 };
+
+MultiBarChartNvd3.propTypes = {
+  height: React.PropTypes.number,
+  width: React.PropTypes.number,
+  colors: React.PropTypes.array,
+  data: React.PropTypes.array,
+};
+
+export default MultiBarChartNvd3;

@@ -58,6 +58,7 @@ function mapDispatchToProps(dispatch) {
 
 ControlPanel.propTypes = {
   width: React.PropTypes.number,
+  height: React.PropTypes.number,
   onChangeWidth: React.PropTypes.func,
   onChangeHeight: React.PropTypes.func,
 

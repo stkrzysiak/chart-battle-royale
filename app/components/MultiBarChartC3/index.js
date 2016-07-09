@@ -26,7 +26,7 @@ function getDatum(data) {
 }
 
 
-export default ({ data, colors, width, height }) => {
+const MultiBarChartC3 = ({ data, colors, width, height }) => {
   const formattedData = getDatum(data);
 
   return (
@@ -46,4 +46,13 @@ export default ({ data, colors, width, height }) => {
       }}
     />
   );
-}
+};
+
+MultiBarChartC3.propTypes = {
+  height: React.PropTypes.number,
+  width: React.PropTypes.number,
+  colors: React.PropTypes.array,
+  data: React.PropTypes.array,
+};
+
+export default MultiBarChartC3;

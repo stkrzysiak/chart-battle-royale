@@ -11,12 +11,12 @@ function getDatum(data) {
   const arrayLength = data.length;
   for (let i = 0; i < arrayLength; i++) {
     datum[i] = datum[i] || [];
-    const tmp = []
+    const tmp = [];
     data[i].map((val) => tmp.push(val.y));
     datum[i] = {
       name: `Series ${i}`,
-      data: tmp
-    }
+      data: tmp,
+    };
   }
 
   return datum;
@@ -28,23 +28,33 @@ function getAxisX(data) {
   return xAxis;
 }
 
-export default ({ data, colors, width, height}) => {
+const MultiBarChartHighCharts = ({ data, colors, width, height }) => {
+
   const formattedData = getDatum(data);
   const config = {
     xAxis: {
-      categories: getAxisX(data),
+      categories: getAxisX(data.slice(0)),
     },
     series: formattedData,
     chart: {
       type: 'column',
-      height: height,
-      width: width,
+      height,
+      width,
     },
-    colors: colors,
+    colors,
   };
   return (
     <div>
       <ReactHighcharts config={config} />
     </div>
   );
-}
+};
+
+MultiBarChartHighCharts.propTypes = {
+  height: React.PropTypes.number,
+  width: React.PropTypes.number,
+  colors: React.PropTypes.array,
+  data: React.PropTypes.array,
+};
+
+export default MultiBarChartHighCharts;

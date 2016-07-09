@@ -22,7 +22,7 @@ import ControlPanel from '../ControlPanel';
 import selectHomePage from './selector';
 const colors = ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900'];
 const data = generateBarChartData();
-console.log(selectHomePage, 'selectHomePage');
+
 const HomePage = ({ width, height }) =>
   (
   <div className={styles.wrapper}>
@@ -32,7 +32,10 @@ const HomePage = ({ width, height }) =>
         <MultiBarChartNvd3 data={data} colors={colors} width={width} height={height} />
       </Tab>
       <Tab label="C3">
-        <MultiBarChartC3 data={data} colors={colors} width={width} height={height}  />
+        <MultiBarChartC3 data={data} colors={colors} width={width} height={height} />
+      </Tab>
+      <Tab label="HighCharts">
+        <MultiBarChartHighCharts data={data} colors={colors} width={width} height={height} />
       </Tab>
 
     </Tabs>
@@ -42,9 +45,9 @@ const HomePage = ({ width, height }) =>
 const mapStateToProps = selectHomePage();
 
 
-
-
 HomePage.propTypes = {
   width: React.PropTypes.number,
+  height: React.PropTypes.number,
 };
+
 export default connect(mapStateToProps)(HomePage);
