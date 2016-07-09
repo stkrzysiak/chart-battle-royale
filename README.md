@@ -1,4 +1,4 @@
-# ${1:Project Name}
+# Chart Battle Royale
 
 ###An epic showdown of charting solutions.
 
