@@ -9,17 +9,31 @@ import { connect } from 'react-redux';
 import selectControlPanel from './selectors';
 import styles from './styles.css';
 import Slider from 'material-ui/Slider';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import ContentRemove from 'material-ui/svg-icons/content/remove';
+import TextField from 'material-ui/TextField';
 
-import { adjustWidth, adjustHeight } from './actions';
+import { blue500 } from 'material-ui/styles/colors';
+
+import { adjustWidth, adjustHeight, updateDataPoints } from './actions';
 
 export class ControlPanel extends React.Component { // eslint-disable-line react/prefer-stateless-function
-
   render() {
-    const { width, height } = this.props;
+    const { width, height, dataPoints } = this.props;
     return (
       <div id="controlPanel">
+        <div id="dataPointsWrapper" className={styles.dataPointsWrapper}>
+          <ContentAdd
+            color={blue500}
+            onClick={() => this.props.onDataPointClick('up')}
+          />
+          <p> There are {dataPoints} series </p>
+          <ContentRemove
+            color={blue500}
+            onClick={() => this.props.onDataPointClick('down')}
+          />
+        </div>
         <div className={styles.sliderWrapper}>
-
           <Slider
             className={styles.slider}
             defaultValue={width}
@@ -51,6 +65,7 @@ function mapDispatchToProps(dispatch) {
   return {
     onChangeWidth: (evt, val) => dispatch(adjustWidth(val)),
     onChangeHeight: (evt, val) => dispatch(adjustHeight(val)),
+    onDataPointClick: (direction) => dispatch(updateDataPoints(direction)),
     dispatch,
   };
 }
@@ -59,8 +74,10 @@ function mapDispatchToProps(dispatch) {
 ControlPanel.propTypes = {
   width: React.PropTypes.number,
   height: React.PropTypes.number,
+  dataPoints: React.PropTypes.number,
   onChangeWidth: React.PropTypes.func,
   onChangeHeight: React.PropTypes.func,
+  onDataPointClick: React.PropTypes.func,
 
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel);

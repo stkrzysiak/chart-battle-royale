@@ -21,26 +21,29 @@ import { generateBarChartData } from '../../utils/data';
 import ControlPanel from '../ControlPanel';
 import selectHomePage from './selector';
 const colors = ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900'];
-const data = generateBarChartData();
 
-const HomePage = ({ width, height }) =>
-  (
-  <div className={styles.wrapper}>
-    <ControlPanel />
-    <Tabs>
-      <Tab label="NVD3">
-        <MultiBarChartNvd3 data={data} colors={colors} width={width} height={height} />
-      </Tab>
-      <Tab label="C3">
-        <MultiBarChartC3 data={data} colors={colors} width={width} height={height} />
-      </Tab>
-      <Tab label="HighCharts">
-        <MultiBarChartHighCharts data={data} colors={colors} width={width} height={height} />
-      </Tab>
 
-    </Tabs>
-  </div>
+const HomePage = ({ width, height, dataPoints }) => {
+  console.log(dataPoints, 'dataPoints');
+  const data = generateBarChartData(dataPoints);
+  return (
+    <div className={styles.wrapper}>
+      <ControlPanel />
+      <Tabs>
+        <Tab label="NVD3">
+          <MultiBarChartNvd3 data={data} colors={colors} width={width} height={height} />
+        </Tab>
+        <Tab label="C3">
+          <MultiBarChartC3 data={data} colors={colors} width={width} height={height} />
+        </Tab>
+        <Tab label="HighCharts">
+          <MultiBarChartHighCharts data={data} colors={colors} width={width} height={height} />
+        </Tab>
+
+      </Tabs>
+    </div>
   );
+};
 
 const mapStateToProps = selectHomePage();
 
@@ -48,6 +51,7 @@ const mapStateToProps = selectHomePage();
 HomePage.propTypes = {
   width: React.PropTypes.number,
   height: React.PropTypes.number,
+  dataPoints: React.PropTypes.number,
 };
 
 export default connect(mapStateToProps)(HomePage);
