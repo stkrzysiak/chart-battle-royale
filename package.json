@@ -145,7 +145,7 @@
     "chance": "^1.0.3",
     "cheerio": "^0.20.0",
     "coveralls": "^2.11.11",
-    "cross-env": "^1.0.7",
+    "cross-env": "^2.0.0",
     "css-loader": "^0.23.1",
     "d3": "^4.1.1",
     "enzyme": "^2.2.0",
