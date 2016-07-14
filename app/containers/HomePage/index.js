@@ -24,7 +24,6 @@ const colors = ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900'];
 
 
 const HomePage = ({ width, height, dataPoints }) => {
-  console.log(dataPoints, 'dataPoints');
   const data = generateBarChartData(dataPoints);
   return (
     <div className={styles.wrapper}>
