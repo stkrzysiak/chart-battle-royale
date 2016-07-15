@@ -23,8 +23,8 @@ import selectHomePage from './selector';
 const colors = ['#69D2E7', '#A7DBD8', '#E0E4CC', '#F38630', '#FA6900'];
 
 
-const HomePage = ({ width, height, dataPoints }) => {
-  const data = generateBarChartData(dataPoints);
+const HomePage = ({ width, height, dataPoints, seriesCount }) => {
+  const data = generateBarChartData(dataPoints, seriesCount);
   return (
     <div className={styles.wrapper}>
       <ControlPanel />
@@ -51,6 +51,7 @@ HomePage.propTypes = {
   width: React.PropTypes.number,
   height: React.PropTypes.number,
   dataPoints: React.PropTypes.number,
+  seriesCount: React.PropTypes.number,
 };
 
 export default connect(mapStateToProps)(HomePage);

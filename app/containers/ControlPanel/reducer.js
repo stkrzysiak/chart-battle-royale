@@ -9,9 +9,15 @@ import {
   ADJUST_HEIGHT,
   ADJUST_WIDTH,
   UPDATE_DATA_POINTS,
+  UPDATE_SERIES_COUNT,
 } from './constants';
 
-const initialState = fromJS({ width: 600, height: 800, dataPoints: 2 });
+const initialState = fromJS({ width: 600, height: 800, dataPoints: 2, seriesCount: 12 });
+const updateIntegerProperty = (property, state, direction) => {
+  let tmp = state.get(property);
+  tmp = direction === 'up' ? ++tmp : --tmp;
+  return state.set(property, tmp);
+};
 
 function controlPanelReducer(state = initialState, action) {
   switch (action.type) {
@@ -20,9 +26,10 @@ function controlPanelReducer(state = initialState, action) {
     case ADJUST_HEIGHT:
       return state.set('height', action.height);
     case UPDATE_DATA_POINTS: {
-      let tmp = state.get('dataPoints');
-      tmp = action.direction === 'up' ? ++tmp : --tmp;
-      return state.set('dataPoints', tmp);
+      return updateIntegerProperty('dataPoints', state, action.direction);
+    }
+    case UPDATE_SERIES_COUNT: {
+      return updateIntegerProperty('seriesCount', state, action.direction);
     }
     default:
       return state;

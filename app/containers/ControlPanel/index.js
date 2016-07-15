@@ -11,26 +11,41 @@ import styles from './styles.css';
 import Slider from 'material-ui/Slider';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
-import TextField from 'material-ui/TextField';
 
 import { blue500 } from 'material-ui/styles/colors';
 
-import { adjustWidth, adjustHeight, updateDataPoints } from './actions';
+import {
+  adjustWidth,
+  adjustHeight,
+  updateDataPoints,
+  updateSeriesCount,
+} from './actions';
 
 export class ControlPanel extends React.Component { // eslint-disable-line react/prefer-stateless-function
   render() {
-    const { width, height, dataPoints } = this.props;
+    const { width, height, dataPoints, seriesCount } = this.props;
     return (
-      <div id="controlPanel">
-        <div id="dataPointsWrapper" className={styles.dataPointsWrapper}>
+      <div id="controlPanel" className={styles.controlPanelWrapper}>
+        <div className={styles.dataPointsWrapper} id="dataPointsWrapper">
           <ContentAdd
             color={blue500}
             onClick={() => this.props.onDataPointClick('up')}
           />
-          <p> There are {dataPoints} series </p>
+          <p className={styles.seriesCopy}>{dataPoints} data points </p>
           <ContentRemove
             color={blue500}
             onClick={() => this.props.onDataPointClick('down')}
+          />
+        </div>
+        <div className={styles.seriesWrapper} id="seriesWrapper">
+          <ContentAdd
+            color={blue500}
+            onClick={() => this.props.onSeriesClick('up')}
+          />
+          <p className={styles.seriesCopy}>{seriesCount} series </p>
+          <ContentRemove
+            color={blue500}
+            onClick={() => this.props.onSeriesClick('down')}
           />
         </div>
         <div className={styles.sliderWrapper}>
@@ -66,6 +81,7 @@ function mapDispatchToProps(dispatch) {
     onChangeWidth: (evt, val) => dispatch(adjustWidth(val)),
     onChangeHeight: (evt, val) => dispatch(adjustHeight(val)),
     onDataPointClick: (direction) => dispatch(updateDataPoints(direction)),
+    onSeriesClick: (direction) => dispatch(updateSeriesCount(direction)),
     dispatch,
   };
 }
@@ -75,9 +91,11 @@ ControlPanel.propTypes = {
   width: React.PropTypes.number,
   height: React.PropTypes.number,
   dataPoints: React.PropTypes.number,
+  seriesCount: React.PropTypes.number,
   onChangeWidth: React.PropTypes.func,
   onChangeHeight: React.PropTypes.func,
   onDataPointClick: React.PropTypes.func,
+  onSeriesClick: React.PropTypes.func,
 
 };
 export default connect(mapStateToProps, mapDispatchToProps)(ControlPanel);
