@@ -5,5 +5,8 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 describe('<MultiBarChartC3 />', () => {
-
+  beforeEach(() => {
+    const wrapper = shallow(<MultiBarChartC3 />);
+    expect(wrapper).to.exist();
+  });
 });

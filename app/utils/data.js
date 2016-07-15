@@ -19,9 +19,7 @@ export const adjustMonths = (dataPoints) => {
 export const generateBarChartData = (dataPoints, seriesCount) => {
   const series = [];
   const totalMonths = adjustMonths(dataPoints);
-  const randomMonth = month => {
-    return { x: month, y: chance.integer({ min: 100, max: 1000 }) };
-  };
+  const randomMonth = month => ({ x: month, y: chance.integer({ min: 100, max: 1000 }) });
 
   for (let i = 0; i < seriesCount; i++) {
     series.push(totalMonths.map(month => randomMonth(month)));

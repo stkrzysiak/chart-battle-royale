@@ -4,8 +4,11 @@ import {
 import { fromJS } from 'immutable';
 import expect from 'expect';
 
-const selector = selectControlPanel();
+const initialState = fromJS({ controlPanel: { arbitrary: 'object' }, foo: { not: 'selected' } });
+const selector = selectControlPanel(initialState);
 
 describe('selectControlPanel', () => {
-
+  it('basic initial state test', () => {
+    expect(selector.arbitrary).to.exist();
+  });
 });

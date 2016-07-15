@@ -29,7 +29,6 @@ function getAxisX(data) {
 }
 
 const MultiBarChartHighCharts = ({ data, colors, width, height }) => {
-
   const formattedData = getDatum(data);
   const config = {
     xAxis: {
