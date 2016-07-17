@@ -181,7 +181,7 @@
     "minimist": "^1.2.0",
     "mocha": "^2.4.5",
     "moment": "^2.13.0",
-    "ngrok": "2.2.1",
+    "ngrok": "2.2.2",
     "null-loader": "^0.1.1",
     "nvd3": "^1.8.3",
     "offline-plugin": "^3.4.2",
