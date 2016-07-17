@@ -1,3 +1,4 @@
+import { createSelector } from 'reselect';
 import moment from 'moment';
 import Chance from 'chance';
 const chance = new Chance();
@@ -27,3 +28,20 @@ export const generateBarChartData = (dataPoints, seriesCount) => {
 
   return series;
 };
+
+
+const selectDataRanges = () => state => {
+  const { seriesCount, dataPoints } = state.get('controlPanel').toJS();
+  return { seriesCount, dataPoints };
+};
+
+/**
+ * Default selector used by ControlPanel
+ */
+
+const randomDataSelector = () => createSelector(
+  selectDataRanges(),
+  (ranges) => generateBarChartData(ranges.dataPoints, ranges.seriesCount)
+);
+
+export default randomDataSelector;
