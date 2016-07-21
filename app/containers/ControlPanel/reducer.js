@@ -12,7 +12,7 @@ import {
   UPDATE_SERIES_COUNT,
 } from './constants';
 
-const initialState = fromJS({ width: 600, height: 800, dataPoints: 2, seriesCount: 12 });
+const initialState = fromJS({ width: 600, height: 800, dataPoints: 12, seriesCount: 3 });
 const updateIntegerProperty = (property, state, direction) => {
   let tmp = state.get(property);
   tmp = direction === 'up' ? ++tmp : --tmp;
