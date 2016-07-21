@@ -20,7 +20,7 @@ describe('<Footer />', () => {
     const renderedComponent = shallow(<Footer />);
     expect(renderedComponent.contains(
       <section>
-        <p>MCreated by Steve Krzysiak</p>
+        <p>Created by Steve Krzysiak</p>
       </section>
     )).toEqual(true);
   });

@@ -18,4 +18,5 @@ const selectControlPanel = () => createSelector(
 export default selectControlPanel;
 export {
   selectControlPanelDomain,
+  selectControlPanel,
 };

@@ -4,6 +4,7 @@ import { fromJS } from 'immutable';
 
 describe('controlPanelReducer', () => {
   it('returns the initial state', () => {
-    expect(controlPanelReducer(undefined, {})).toEqual(fromJS({}));
+    const EXPECTED = fromJS({ width: 600, height: 800, dataPoints: 12, seriesCount: 3 });
+    expect(controlPanelReducer(undefined, {})).toEqual(EXPECTED);
   });
 });
